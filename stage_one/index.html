@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 3rem;
+        }
+        a{
+            text-decoration: none;
+            color: aquamarine;
+        }
+        img{
+            width: 20rem;
+            height: 30rem;
+            border-radius: 2rem;
+        }
+    </style>
+    <title>HNGx Stage One</title>
+</head>
+
+<body>
+    <div>
+        <h3 data-testid="slackUserName">Slack Name: Aghedo Emmanuel</h3>
+        <img src="../photo_2023-09-07_09-02-16.jpg" alt="slack display image" data-testid="slackDisplayImage"/>
+        <p id="currentday" data-testid="currentDayOfTheWeek"></p>
+        <p id="currenttime"  data-testid="currentUTCTime"></p>
+        <h3 data-testid="myTrack">Track: Front-End</h3>
+        <a href="https://github.com/AghedoEmmanuel" target="_blank" data-testid=“githubURL”>Github profile</a>
+    </div>
+
+    <script>
+        function update() {
+            const updateDay = document.getElementById('currentday');
+            const updateTime = document.getElementById('currenttime');
+            const date = new Date();
+
+            const dayOptions = { weekday: 'long' };
+            const updatedDay = date.toLocaleDateString('en-UK', dayOptions);
+            updateDay.textContent = `Day of the Week: ${updatedDay}`;
+            
+
+            const timeOptions = { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
+            const updatedTime = date.toLocaleTimeString('en-UK', timeOptions);
+            updateTime.textContent = `Current Time: ${updatedTime}`;
+            
+        }
+        update();
+        setInterval(update, 1000);
+    </script>
+</body>
+
+</html>
