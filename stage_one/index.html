@@ -32,7 +32,7 @@
         <p id="currentday" data-testid="currentDayOfTheWeek"></p>
         <p id="currenttime"  data-testid="currentUTCTime"></p>
         <h3 data-testid="myTrack">FrontEnd</h3>
-        <a href="https://github.com/AghedoEmmanuel" target="_blank" data-testid=“githubURL”>Github profile</a>
+        <a href="https://github.com/AghedoEmmanuel/HNGx/tree/main/stage_one" target="_blank" data-testid=“githubURL”>Github profile</a>
     </div>
 
     <script>
@@ -45,20 +45,15 @@
             const updatedDay = date.toLocaleDateString('en-UK', dayOptions);
             updateDay.textContent = `${updatedDay}`;
 
-            const hours = date.getUTCHours();
-            const minutes = date.getUTCMinutes();
-            const seconds = date.getUTCSeconds();
-            const milliseconds = date.getUTCMilliseconds();
-            const formattedTime = `${hours.toString().padStart(2,'0')}${minutes.toString().padStart(2,'0')}${seconds.toString().padStart(2,'0')}${milliseconds.toString().padStart(3,'0')}`;
+           
+            const milliseconds = date.getTime();
+            const formattedTime = `${milliseconds.toString().padStart(3,'0')}`;
             updateTime.textContent = `${formattedTime}`
             
             
         }
         update();
         setInterval(update, 100);
-        
-
-
     </script>
 
 </body>
