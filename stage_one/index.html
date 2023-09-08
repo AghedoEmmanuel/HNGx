@@ -27,7 +27,7 @@
 
 <body>
     <div>   
-        <h3 data-testid="slackUserName"> slackUserName:Aghedo Emmanuel</h3>
+        <h3 data-testid="slackUserName"> Slack User Name:Aghedo Emmanuel</h3>
         <img src="./photo_2023-09-07_09-02-16.jpg" alt="slackDisplayImage" data-testid="slackDisplayImage"/>
         <p id="currentday" data-testid="currentDayOfTheWeek"></p>
         <p id="currenttime"  data-testid="currentUTCTime"></p>
@@ -46,17 +46,14 @@
             updateDay.textContent = `Day of the Week: ${updatedDay}`;
             
 
-            
-            const hours = date.getUTCHours();
-            const minutes = date.getUTCMinutes();
-            const seconds = date.getUTCSeconds();
+           
             const milliseconds = date.getUTCMilliseconds();
-            const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}:${milliseconds.toString().padStart(3,'0')}`;
+            const formattedTime = `${milliseconds.toString().padStart(9,'0')}`;
             updateTime.textContent = `Current Time (UTC): ${formattedTime}`
             
         }
         update();
-        setInterval(update, 1000);
+        setInterval(update, 100);
     </script>
 </body>
 
