@@ -27,11 +27,11 @@
 
 <body>
     <div>   
-        <h3 data-testid="slackUserName"> Slack User Name:Aghedo Emmanuel</h3>
+        <h3 data-testid="slackUserName">Aghedo Emmanuel</h3>
         <img src="./photo_2023-09-07_09-02-16.jpg" alt="slackDisplayImage" data-testid="slackDisplayImage"/>
         <p id="currentday" data-testid="currentDayOfTheWeek"></p>
         <p id="currenttime"  data-testid="currentUTCTime"></p>
-        <h3 data-testid="myTrack">Track: Front-End</h3>
+        <h3 data-testid="myTrack">FrontEnd</h3>
         <a href="https://github.com/AghedoEmmanuel" target="_blank" data-testid=“githubURL”>Github profile</a>
     </div>
 
@@ -43,13 +43,12 @@
 
             const dayOptions = { weekday: 'long' };
             const updatedDay = date.toLocaleDateString('en-UK', dayOptions);
-            updateDay.textContent = `Day of the Week: ${updatedDay}`;
-            
-
+            updateDay.textContent = `${updatedDay}`;
            
             const milliseconds = date.getUTCMilliseconds();
             const formattedTime = `${milliseconds.toString().padStart(9,'0')}`;
-            updateTime.textContent = `Current Time (UTC): ${formattedTime}`
+            updateTime.textContent = `${formattedTime}`
+            // updateTime.textContent = `Current Time (UTC): ${formattedTime}`
             
         }
         update();
