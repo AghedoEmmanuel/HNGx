@@ -44,16 +44,23 @@
             const dayOptions = { weekday: 'long' };
             const updatedDay = date.toLocaleDateString('en-UK', dayOptions);
             updateDay.textContent = `${updatedDay}`;
-           
+
+            const hours = date.getUTCHours();
+            const minutes = date.getUTCMinutes();
+            const seconds = date.getUTCSeconds();
             const milliseconds = date.getUTCMilliseconds();
-            const formattedTime = `${milliseconds.toString().padStart(9,'0')}`;
+            const formattedTime = `${hours.toString().padStart(2,'0')}${minutes.toString().padStart(2,'0')}${seconds.toString().padStart(2,'0')}${milliseconds.toString().padStart(3,'0')}`;
             updateTime.textContent = `${formattedTime}`
-            // updateTime.textContent = `Current Time (UTC): ${formattedTime}`
+            
             
         }
         update();
         setInterval(update, 100);
+        
+
+
     </script>
+
 </body>
 
 </html>
