@@ -46,11 +46,12 @@
             updateDay.textContent = `Day of the Week: ${updatedDay}`;
             
 
-           
+            
             const hours = date.getUTCHours();
             const minutes = date.getUTCMinutes();
             const seconds = date.getUTCSeconds();
-            const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            const milliseconds = date.getUTCMilliseconds();
+            const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}:${milliseconds.toString().padStart(3,'0')}`;
             updateTime.textContent = `Current Time (UTC): ${formattedTime}`
             
         }
