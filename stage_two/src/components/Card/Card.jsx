@@ -2,13 +2,21 @@
 import imdb from '../../assets/imdb.svg'
 import { Link } from 'react-router-dom';
 import fav from '../../assets/Favorite.svg'
+import { useState } from 'react';
 
 function Card({ movie, selectMovie }) {
+
+  const[click, setClick] = useState(false)
 
   const formatDateToUTC = (dateString) => {
     const options = { timeZone: 'UTC', year: 'numeric' };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
+
+  const clicked = () =>{
+    setClick(!click)
+  }
+  
 
   return (
     <Link to={`/movie/${movie.id}`} >
@@ -21,8 +29,8 @@ function Card({ movie, selectMovie }) {
                 className="w-full "
                 alt={movie.title}
               />
-              <div className='absolute top-2 right-3 hover:bg-rose-500'>
-                <img src={fav} alt='fav-icon' />
+              <div className='absolute top-2 right-3 '>
+                <img src={fav} alt='fav-icon' onClick={()=>clicked()} className='hover:bg-rose-500 rounded-full'/>
               </div>
             </div>
           ) : (

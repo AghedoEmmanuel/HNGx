@@ -6,8 +6,8 @@ import logo from './assets/Logo.png'
 import { IoMdMenu, IoMdClose, IoMdSearch } from 'react-icons/io'
 import Youtube from 'react-youtube'
 import play from './assets/Play.svg'
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import './index.css'
+import { BrowserRouter as Router, Routes, Route, useLocation, Link } from 'react-router-dom';
+import search from './assets/Search.svg'
 
 const API_URL = "https://api.themoviedb.org/3"
 const api_key = import.meta.env.VITE_REACT_MOVIE_APP_API_KEY
@@ -22,6 +22,7 @@ function App() {
   const [searchKey, setSearchKey] = useState("")
   const [selectedMovie, setSelectedMovie] = useState({})
   const [playTrailer, setPlayTrailer] = useState(false)
+  const [error, setError] = useState(false)
 
 
   const toggleNavbar = () => {
@@ -44,8 +45,9 @@ function App() {
       setTest(top)
       setSelectedMovie(top[0])
       // console.log(top)
+      setError(null)
     } catch (error) {
-      alert('Error fetching ', error)
+      setError('No result found. Please try another search')
     }
   }
 
@@ -81,12 +83,12 @@ function App() {
     fetchData(searchKey)
   }
 
-  const renderTrailer = () => {
-    const trailer = selectedMovie.videos.results.find(vid => vid.type === 'Trailer')
-    return (
-      <Youtube videoId={trailer.key} />
-    )
-  }
+  // const renderTrailer = () => {
+  //   const trailer = selectedMovie.videos.results.find(vid => vid.type === 'Trailer')
+  //   return (
+  //     <Youtube videoId={trailer.key} />
+  //   )
+  // }
 
 
 
@@ -105,20 +107,19 @@ function App() {
             </div>
 
             <form onSubmit={searchMovies}>
-              <div className={` ${navbar ? '' : 'hidden md:inline'}`}>
-                <input type="text" placeholder="search...." value={searchKey} onChange={(e) => setSearchKey(e.target.value)} className='md:py-2 md:pr-20 md:pl-4 rounded-lg border border-gray-300 focus:outline-none focus:ring focus:border-blue-300' />
-                {/* <button onClick={toggleNavbar} className='bg-red-700 rounded-full'>
-                  <IoMdSearch size={20} className="text-gray-400" />
-                </button> */}
+              <div className={`relative ${navbar ? '' : 'hidden md:inline'}`}>
+                <input type="text" placeholder="search...." value={searchKey} onChange={(e) => setSearchKey(e.target.value)} className='md:py-2 md:px-44 rounded-lg border border-gray-300 focus:outline-none focus:ring focus:border-blue-300' />
+               <div className="absolute top-1 right-3">
+               <img src={search} alt="search" className="bg-red-500"/>
+               </div>
               </div>
             </form>
-            <div className={`flex flex-row items-center`}>
-              <a className="text-white mr-6">Sign in</a>
-              <div >
-
-                <button onClick={toggleNavbar} className='bg-red-700 rounded-full'>
+                <button onClick={toggleNavbar} className={`bg-red-700 rounded-full ${navbar?'block':'md:hidden'}`}>
                   {navbar ? <IoMdClose size={30} /> : <IoMdMenu size={30} />}
                 </button>
+            <div className={`flex md:flex-row items-center flex-col `}>
+              <a className={`text-white md:mr-6  hover:text-rose-500 cursor-pointer ${navbar ? '' : 'md:block hidden'}`}>Sign in</a>
+              <div >
               </div>
             </div>
           </navbar>
@@ -132,6 +133,11 @@ function App() {
               <button className="flex items-center bg-red-700 p-2 rounded-lg px-8" onClick={() => setPlayTrailer(true)}><img src={play} />WATCH TRAILER</button>
             </div>
           </div>
+          {error &&(
+            <div className="text-red-500 text-center mt-4">
+              {error}<Link to='/'>Go back to home page</Link>
+            </div>
+          )}
         </div>
 
 
