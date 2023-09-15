@@ -128,7 +128,7 @@ function App() {
           <div>
             <div className="pt-14 md:px-44 space-y-2">
               {/* {selectedMovie.videos && playTrailer ? renderTrailer() : null} */}
-              <h1 className="font-bold md:text-4xl max-w-xs text-amber-400" data-testid="movie-title">{selectedMovie.title}</h1>
+              <h1 className="font-bold md:text-4xl max-w-xs text-amber-400">{selectedMovie.title}</h1>
               <p className="md:max-w-xs font-semibold leading-loose text-amber-400">{selectedMovie.overview ? <p>{selectedMovie.overview}</p> : <p>There is currently no information on this movie</p>}</p>
               <button className="flex items-center bg-red-700 p-2 rounded-lg px-8" onClick={() => setPlayTrailer(true)}><img src={play} />WATCH TRAILER</button>
             </div>
