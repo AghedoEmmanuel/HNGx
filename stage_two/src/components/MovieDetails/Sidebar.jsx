@@ -1,4 +1,4 @@
-import name from '../../assets/MovieBox.svg'
+
 import { Link } from 'react-router-dom'
 import home from '../../assets/Home.svg'
 import movie from '../../assets/Movie Projector.svg'
