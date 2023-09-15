@@ -10,7 +10,7 @@ function Card({ movie, selectMovie }) {
 
   const formatDateToUTC = (dateString) => {
     const options = { timeZone: 'UTC', year: 'numeric' };
-    return new Date(dateString).toLocaleDateString(undefined, options);
+    return new Date(dateString).toUTCString(undefined, options);
   };
 
   const clicked = (e) => {
