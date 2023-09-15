@@ -6,17 +6,20 @@ import { useState } from 'react';
 
 function Card({ movie, selectMovie }) {
 
-  const[click, setClick] = useState(false)
+  const [click, setClick] = useState(false)
 
   const formatDateToUTC = (dateString) => {
     const options = { timeZone: 'UTC', year: 'numeric' };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
-  const clicked = () =>{
+  const clicked = (e) => {
+    e.preventDefault()
     setClick(!click)
   }
+
   
+
 
   return (
     <Link to={`/movie/${movie.id}`} >
@@ -30,7 +33,7 @@ function Card({ movie, selectMovie }) {
                 alt={movie.title}
               />
               <div className='absolute top-2 right-3 '>
-                <img src={fav} alt='fav-icon' onClick={()=>clicked()} className='hover:bg-rose-500 rounded-full'/>
+                <img src={click ? fav : fav} alt='fav-icon' onClick={clicked} className={`cursor-pointer rounded-full ${click ? 'text-rose-600' : 'hover:bg-rose-500'}`} />
               </div>
             </div>
           ) : (
