@@ -4,14 +4,15 @@ import App from './App.jsx'
 import './index.css'
 import {createBrowserRouter,createRoutesFromElements,Route,RouterProvider} from 'react-router-dom'
 import Login from './component/Login.jsx'
-import DragandDrop from './component/Drag_and_Drop/DragandDrop.jsx'
+// import DragandDrop from './component/Drag_and_Drop/DragandDrop.jsx'
+import Home from './component/Drag_and_Drop/Home.jsx'
 
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App/>}>
     <Route index element={<Login/>}/>
-    <Route path='draganddrop' element={<DragandDrop/>}/>
+    <Route path='home' element={<Home/>}/>
     </Route>
   )
 );
