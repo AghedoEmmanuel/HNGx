@@ -20,6 +20,7 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((data) => {
         console.log(data, "authData");
+        window.localStorage.setItem("user", email);
         history("/home");
       })
       .catch((error) => {

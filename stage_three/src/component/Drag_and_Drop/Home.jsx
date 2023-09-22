@@ -7,7 +7,7 @@ import ImageCard from "./ImageCard";
 
 const Home = () => {
   const navigate = useNavigate();
-  // const user = localStorage.getItem("user");
+  const user = localStorage.getItem("user");
 
   const [images, setImages] = useState([]);
   const [query, setQuery] = useState("");
@@ -73,11 +73,11 @@ const Home = () => {
     // console.log(results);
   };
 
-  // const checkUser = () => {
-  //   if (!user) {
-  //     navigate("/signin");
-  //   }
-  // };
+  const checkUser = () => {
+    if (!user) {
+      navigate("/signin");
+    }
+  };
 
   const handleLogout = () => {
     window.localStorage.removeItem("user");
@@ -86,7 +86,7 @@ const Home = () => {
   };
 
   useEffect(() => {
-    // checkUser();
+    checkUser();
     getImages();
   }, []);
 
