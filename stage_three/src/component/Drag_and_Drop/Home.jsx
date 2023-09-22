@@ -75,7 +75,7 @@ const Home = () => {
 
   const checkUser = () => {
     if (!user) {
-      navigate("/signin");
+      navigate("/");
     }
   };
 
