@@ -20,7 +20,7 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((data) => {
         console.log(data, "authData");
-        history("./draganddrop");
+        history("/home");
       })
       .catch((error) => {
         alert(`Stop playing ${error.code}`);
